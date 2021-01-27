@@ -34,7 +34,20 @@ app.post(
   '/validate-rule',
   [checkRequiredFields, validateFieldType, validateRuleObject],
   (req, res) => {
-    res.send('ok');
+    const { rule, data } = req.body;
+    const dataKeys = Object.keys(data);
+
+    try {
+      if (!dataKeys.includes(rule.field)) {
+        return res.status(400).send({
+          message: `field [${rule.field}] is missing from data.`,
+          status: 'error',
+          data: null,
+        });
+      }
+    } catch (error) {
+      res.status.send(error.message);
+    }
   },
 );
 
