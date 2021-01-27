@@ -2,6 +2,7 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const { checkRequiredFields } = require('./middlewares/checkRequiredFields');
 const { validateFieldType } = require('./middlewares/validateFieldType');
+const { validateRuleObject } = require('./middlewares/validateRuleObject');
 
 const app = express();
 const port = 6000;
@@ -31,8 +32,7 @@ app.get('/', (req, res) => {
 
 app.post(
   '/validate-rule',
-  checkRequiredFields,
-  validateFieldType,
+  [checkRequiredFields, validateFieldType, validateRuleObject],
   (req, res) => {
     res.send('ok');
   },
