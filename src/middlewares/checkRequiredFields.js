@@ -22,6 +22,16 @@ const checkRequiredFields = (req, res, next) => {
       }
     });
 
+    requestFields.forEach((field) => {
+      if (!requiredFields.includes(field)) {
+        return res.status(400).send({
+          message: 'Invalid JSON payload passed.',
+          status: 'error',
+          data: null,
+        });
+      }
+    });
+
     next();
   } catch (error) {
     res.status(400).send(error.message);
