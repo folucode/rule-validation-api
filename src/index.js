@@ -1,7 +1,17 @@
+const bodyParser = require('body-parser');
 const express = require('express');
+const { checkRequiredFields } = require('./middlewares/checkRequiredFields');
+const { validateFieldType } = require('./middlewares/validateFieldType');
 
 const app = express();
 const port = 6000;
+
+app.use(bodyParser.json());
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  }),
+);
 
 app.get('/', (req, res) => {
   const data = {
@@ -19,8 +29,13 @@ app.get('/', (req, res) => {
   });
 });
 
-app.post('/validate-rule', (req, res) => {
-  res.send();
-});
+app.post(
+  '/validate-rule',
+  checkRequiredFields,
+  validateFieldType,
+  (req, res) => {
+    res.send('ok');
+  },
+);
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
