@@ -11,7 +11,7 @@ const validateRuleObject = (req, res, next) => {
     requiredFields.forEach((field) => {
       if (!ruleKeys.includes(field)) {
         return res.status(400).send({
-          message: `[${field}] is required in rule object.`,
+          message: `${field} is required in rule object.`,
           status: 'error',
           data: null,
         });

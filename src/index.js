@@ -3,6 +3,13 @@ const express = require('express');
 const { checkRequiredFields } = require('./middlewares/checkRequiredFields');
 const { validateFieldType } = require('./middlewares/validateFieldType');
 const { validateRuleObject } = require('./middlewares/validateRuleObject');
+const {
+  checkEquality,
+  checkInEquality,
+  checkGreaterthan,
+  checkGreaterthanEqualto,
+  checkContains,
+} = require('./utils/validation');
 
 const app = express();
 const port = 6000;
@@ -40,13 +47,42 @@ app.post(
     try {
       if (!dataKeys.includes(rule.field)) {
         return res.status(400).send({
-          message: `field [${rule.field}] is missing from data.`,
+          message: `field ${rule.field} is missing from data.`,
           status: 'error',
           data: null,
         });
       }
+
+      let resultData;
+
+      switch (rule.condition) {
+        case 'eq': {
+          resultData = checkEquality(rule, data);
+          break;
+        }
+        case 'neq': {
+          resultData = checkInEquality(rule, data);
+          break;
+        }
+        case 'gt': {
+          resultData = checkGreaterthan(rule, data);
+          break;
+        }
+        case 'gte': {
+          resultData = checkGreaterthanEqualto(rule, data);
+          break;
+        }
+        case 'contains': {
+          resultData = checkContains(rule, data);
+          break;
+        }
+        default:
+          break;
+      }
+
+      res.send(resultData);
     } catch (error) {
-      res.status.send(error.message);
+      res.status(400).send(error.message);
     }
   },
 );
