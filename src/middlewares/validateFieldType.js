@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /**
  * @method validateFieldType - validate the field type
  *

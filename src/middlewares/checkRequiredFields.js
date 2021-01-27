@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /**
  * @method checkRequiredFields - check if required fields are present
  *

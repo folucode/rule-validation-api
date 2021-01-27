@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 const validateRuleObject = (req, res, next) => {
   const { rule } = req.body;
 

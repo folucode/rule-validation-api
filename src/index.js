@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 const bodyParser = require('body-parser');
 const express = require('express');
 const { checkRequiredFields } = require('./middlewares/checkRequiredFields');
