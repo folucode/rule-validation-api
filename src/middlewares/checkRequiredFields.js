@@ -2,9 +2,9 @@
 /**
  * @method checkRequiredFields - check if required fields are present
  *
- * @param  {} req - request object
- * @param  {} res - response object
- * @param  {} next - move to the next middleware|function
+ * @param  {Object} req - request object
+ * @param  {Object} res - response object
+ * @param  {Object} next - move to the next middleware|function
  *
  *  @returns {Object} err|next()
  */

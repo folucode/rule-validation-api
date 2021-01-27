@@ -1,3 +1,12 @@
+/**
+ * @method buildSuccessResponse - build success response object
+ *
+ * @param  {Object} rule
+ * @param  {Object|String|Array} data
+ * @param  {String} condition
+ *
+ * @returns {Object} - success response object
+ */
 const buildSuccessResponse = (rule, data, condition) => ({
   message: `field ${rule.field} successfully validated.`,
   status: 'success',
@@ -12,6 +21,15 @@ const buildSuccessResponse = (rule, data, condition) => ({
   },
 });
 
+/**
+ * @method buildFailureResponse - build failure response object
+ *
+ * @param  {Object} rule
+ * @param  {Object|String|Array} data
+ * @param  {String} condition
+ *
+ * @returns {Object} - failure response object
+ */
 const buildFailureResponse = (rule, data, condition) => ({
   message: `field ${rule.field} failed validation.`,
   status: 'error',

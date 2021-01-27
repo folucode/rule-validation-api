@@ -1,4 +1,14 @@
 /* eslint-disable consistent-return */
+
+/**
+ * @method validateRuleObject - validates the [rule] object passed to the endpoint
+ *
+ * @param  {Object} req - request object
+ * @param  {Object} res - response object
+ * @param  {Object} next - move to the next middleware|function
+ *
+ * @returns {Object} - error|next()
+ */
 const validateRuleObject = (req, res, next) => {
   const { rule } = req.body;
 

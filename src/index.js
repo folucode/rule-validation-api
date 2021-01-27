@@ -43,7 +43,7 @@ app.post(
   [checkRequiredFields, validateFieldType, validateRuleObject],
   (req, res) => {
     const { rule, data } = req.body;
-    const dataKeys = Object.keys(data);
+    const dataKeys = Object.keys(data)
 
     try {
       if (!dataKeys.includes(rule.field)) {

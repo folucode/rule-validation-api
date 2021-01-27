@@ -3,6 +3,14 @@ const {
   buildFailureResponse,
 } = require('./buildResponse');
 
+/**
+ * @method checkEquality - checks for equality between 2 parameters
+ *
+ * @param  {Object} rule
+ * @param  {Object|String|Array} data
+ *
+ * @returns {Object}
+ */
 const checkEquality = (rule, data) => {
   if (data[rule.field] === rule.condition_value) {
     return buildSuccessResponse(rule, data, 'eq');
@@ -11,6 +19,14 @@ const checkEquality = (rule, data) => {
   return buildFailureResponse(rule, data, 'eq');
 };
 
+/**
+ * @method checkInEquality - checks for inequality between 2 parameters
+ *
+ * @param  {Object} rule
+ * @param  {Object|String|Array} data
+ *
+ * @returns {Object}
+ */
 const checkInEquality = (rule, data) => {
   if (data[rule.field] !== rule.condition_value) {
     return buildSuccessResponse(rule, data, 'neq');
@@ -19,6 +35,14 @@ const checkInEquality = (rule, data) => {
   return buildFailureResponse(rule, data, 'neq');
 };
 
+/**
+ * @method checkGreaterthan - checks if a parameter is greater than the other
+ *
+ * @param  {Object} rule
+ * @param  {Object|String|Array} data
+ *
+ * @returns {Object}
+ */
 const checkGreaterthan = (rule, data) => {
   if (data[rule.field] > rule.condition_value) {
     return buildSuccessResponse(rule, data, 'gt');
@@ -27,6 +51,14 @@ const checkGreaterthan = (rule, data) => {
   return buildFailureResponse(rule, data, 'gt');
 };
 
+/**
+ * @method checkGreaterthanEqualto - checks if a parameter is greater than or equalto the other
+ *
+ * @param  {Object} rule
+ * @param  {Object|String|Array} data
+ *
+ * @returns {Object}
+ */
 const checkGreaterthanEqualto = (rule, data) => {
   if (data[rule.field] >= rule.condition_value) {
     return buildSuccessResponse(rule, data, 'gte');
@@ -35,6 +67,14 @@ const checkGreaterthanEqualto = (rule, data) => {
   return buildFailureResponse(rule, data, 'gte');
 };
 
+/**
+ * @method checkContains - checks if a parameter contains the other
+ *
+ * @param  {Object} rule
+ * @param  {Object|String|Array} data
+ *
+ * @returns {Object}
+ */
 const checkContains = (rule, data) => {
   if (data[rule.field].toString().includes(rule.condition_value)) {
     return buildSuccessResponse(rule, data, 'contains');
