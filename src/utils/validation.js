@@ -20,14 +20,14 @@ const checkEquality = (rule, data) => {
 };
 
 /**
- * @method checkInEquality - checks for inequality between 2 parameters
+ * @method checkInequality - checks for inequality between 2 parameters
  *
  * @param  {Object} rule
  * @param  {Object|String|Array} data
  *
- * @returns {Object}
+ * @returns {Object} - response object
  */
-const checkInEquality = (rule, data) => {
+const checkInequality = (rule, data) => {
   if (data[rule.field] !== rule.condition_value) {
     return buildSuccessResponse(rule, data, 'neq');
   }
@@ -41,7 +41,7 @@ const checkInEquality = (rule, data) => {
  * @param  {Object} rule
  * @param  {Object|String|Array} data
  *
- * @returns {Object}
+ * @returns {Object} - response object
  */
 const checkGreaterthan = (rule, data) => {
   if (data[rule.field] > rule.condition_value) {
@@ -57,7 +57,7 @@ const checkGreaterthan = (rule, data) => {
  * @param  {Object} rule
  * @param  {Object|String|Array} data
  *
- * @returns {Object}
+ * @returns {Object} - response object
  */
 const checkGreaterthanEqualto = (rule, data) => {
   if (data[rule.field] >= rule.condition_value) {
@@ -73,7 +73,7 @@ const checkGreaterthanEqualto = (rule, data) => {
  * @param  {Object} rule
  * @param  {Object|String|Array} data
  *
- * @returns {Object}
+ * @returns {Object} - response object
  */
 const checkContains = (rule, data) => {
   if (data[rule.field].toString().includes(rule.condition_value)) {
@@ -85,7 +85,7 @@ const checkContains = (rule, data) => {
 
 module.exports = {
   checkEquality,
-  checkInEquality,
+  checkInequality,
   checkGreaterthan,
   checkGreaterthanEqualto,
   checkContains,

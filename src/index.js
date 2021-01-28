@@ -6,7 +6,7 @@ const { validateFieldType } = require('./middlewares/validateFieldType');
 const { validateRuleObject } = require('./middlewares/validateRuleObject');
 const {
   checkEquality,
-  checkInEquality,
+  checkInequality,
   checkGreaterthan,
   checkGreaterthanEqualto,
   checkContains,
@@ -43,7 +43,7 @@ app.post(
   [checkRequiredFields, validateFieldType, validateRuleObject],
   (req, res) => {
     const { rule, data } = req.body;
-    const dataKeys = Object.keys(data)
+    const dataKeys = Object.keys(data);
 
     try {
       if (!dataKeys.includes(rule.field)) {
@@ -62,7 +62,7 @@ app.post(
           break;
         }
         case 'neq': {
-          resultData = checkInEquality(rule, data);
+          resultData = checkInequality(rule, data);
           break;
         }
         case 'gt': {
@@ -88,4 +88,4 @@ app.post(
   },
 );
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(port, () => console.log(`App listening on port ${port}!`));
